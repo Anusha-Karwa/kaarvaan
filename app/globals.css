@@ -1,26 +1,161 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ---------- Kaarvaan "Jaipur block-print" tokens ---------- */
+@theme {
+  --color-indigo: #1f2a5c;
+  --color-indigo-dark: #141b3d;
+  --color-rani: #c2185b;
+  --color-rani-dark: #8e1043;
+  --color-marigold: #e8a33d;
+  --color-leaf: #2e7d5b;
+  --color-leaf-dark: #1f5a41;
+  --color-haldi: #f2c14e;
+  --color-terracotta: #b5462f;
+  --color-ivory: #fbf6ec;
+  --color-sand: #efe3cf;
+  --color-ink: #2b2233;
+  --color-muted: #6e626a; /* slightly darker than #7A6E75 so small text passes AA on ivory */
+  --color-marigold-ink: #8a5a12; /* AA-safe marigold for small text */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-display: var(--font-rozha), "Rozha One", Georgia, serif;
+  --font-sans: var(--font-mukta), "Mukta", system-ui, sans-serif;
+  --font-deva: var(--font-tiro), "Tiro Devanagari Hindi", var(--font-mukta), serif;
+  --font-hand: var(--font-kalam), "Kalam", cursive;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --shadow-card: 0 4px 14px rgba(31, 42, 92, 0.08);
+  --shadow-lift: 0 10px 24px rgba(31, 42, 92, 0.14);
+  --radius-card: 16px;
+
+  --animate-spin-slow: spin 60s linear infinite;
+  --animate-shimmer: shimmer 1.4s ease-in-out infinite;
+  --animate-page-in: page-in 0.24s ease-out both;
+  --animate-rise: rise 0.5s cubic-bezier(.2,.7,.3,1) both;
+
+  @keyframes page-in {
+    from { opacity: 0.4; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes rise {
+    from { opacity: 0.001; transform: translateY(24px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+  h1, h2, h3 {
+    color: var(--color-indigo);
+  }
+  :lang(hi), .deva {
+    font-family: var(--font-deva);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-marigold);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--color-haldi);
+    color: var(--color-ink);
+  }
+  button, [role="button"] { cursor: pointer; }
+}
+
+@layer components {
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-sand);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  /* Marigold wavy underline for text links */
+  .link-wavy {
+    color: var(--color-indigo);
+    font-weight: 600;
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--color-marigold);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+  }
+  .link-wavy:hover { color: var(--color-rani); }
+
+  .skeleton {
+    background: linear-gradient(90deg, var(--color-sand) 25%, #f7efe0 50%, var(--color-sand) 75%);
+    background-size: 200% 100%;
+    animation: var(--animate-shimmer);
+    border-radius: 12px;
+  }
+
+  .scroll-x {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 0.5rem;
+  }
+  .scroll-x::-webkit-scrollbar { display: none; }
+  .scroll-x > * { scroll-snap-align: start; flex-shrink: 0; }
+
+  .container-k {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-k { padding-inline: 1.5rem; }
+  }
+
+  .flip-inner { transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(.2,.7,.3,1); }
+  .flip-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .flip-back { transform: rotateY(180deg); }
+  .is-flipped .flip-inner { transform: rotateY(180deg); }
+}
+
+/* Sunlight mode (here-now): bump small text up and contrast */
+.mode-here .text-sm { font-size: 1rem; }
+.mode-here .text-muted { color: #574c54; }
+
+/* Reduced motion: system pref or in-app override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.reduce-motion *, .reduce-motion *::before, .reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+@media print {
+  .no-print { display: none !important; }
 }

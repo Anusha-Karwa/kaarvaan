@@ -1,0 +1,145 @@
+[
+  {
+    "slug": "dal-baati-churma",
+    "name": "Dal baati churma",
+    "nameHi": "दाल बाटी चूरमा",
+    "illustration": "thali",
+    "veg": true,
+    "spice": 2,
+    "bestTime": "lunch",
+    "bestTimeLabel": "A long, lazy lunch",
+    "hook": "Rajasthan on a plate: baked wheat balls, ghee, dal and a sweet crumble.",
+    "what": "Baati are hard, round wheat rolls baked over coals or in an oven. They come with spiced lentils (dal) and churma, a sweet crumble of wheat, ghee and jaggery or sugar.",
+    "howToEat": "Crack the baati with your fingers, let them pour ghee on (or say 'kam ghee'), dunk in dal, and eat churma in between bites. Then nap.",
+    "vegNote": "Fully vegetarian. Very rich in ghee; ask for less if you like.",
+    "spots": [
+      { "name": "Chulha Rasoi", "area": "amer", "lat": 26.9866, "lng": 75.8528, "hours": { "open": "11:00", "close": "22:00", "closedDays": [] }, "note": "Simple family dhaba below the fort. Baati baked over cow-dung coals, the old way.", "isDemo": true },
+      { "name": "Thali Haveli", "area": "c-scheme", "lat": 26.9071, "lng": 75.8019, "hours": { "open": "12:00", "close": "15:30", "closedDays": [1] }, "note": "Unlimited Rajasthani thali. Come hungry and leave rolling.", "isDemo": true }
+    ]
+  },
+  {
+    "slug": "pyaaz-kachori",
+    "name": "Pyaaz kachori",
+    "nameHi": "प्याज़ कचौरी",
+    "illustration": "kachori",
+    "veg": true,
+    "spice": 2,
+    "bestTime": "breakfast",
+    "bestTimeLabel": "Breakfast, with chai",
+    "hook": "Flaky, deep-fried pastry stuffed with spiced onion. Jaipur's morning ritual.",
+    "what": "A round, crisp pastry filled with onions cooked with spices and a little fennel. Served hot with tangy tamarind and green chutneys.",
+    "howToEat": "Break it open, pour chutney into the middle, eat while hot. One is a snack; two is breakfast.",
+    "vegNote": "Vegetarian. Contains onion, so not for those who avoid it. Ask for 'mawa kachori' if you want a sweet one.",
+    "spots": [
+      { "name": "Chaupar Kachori Thela", "area": "old-city", "lat": 26.9236, "lng": 75.8263, "hours": { "open": "07:30", "close": "13:00", "closedDays": [] }, "note": "Hot batches every few minutes. Eat standing, like everyone else.", "isDemo": true },
+      { "name": "Kesariya Mithai Ghar", "area": "mi-road", "lat": 26.9164, "lng": 75.8101, "hours": { "open": "08:00", "close": "21:00", "closedDays": [] }, "note": "Busy sweet shop with kachori in the morning and sweets all day.", "isDemo": true }
+    ]
+  },
+  {
+    "slug": "mirchi-vada",
+    "name": "Mirchi vada",
+    "nameHi": "मिर्ची वड़ा",
+    "illustration": "mirchi-vada",
+    "veg": true,
+    "spice": 2,
+    "bestTime": "evening",
+    "bestTimeLabel": "Evening snack, with chai",
+    "hook": "A big green chilli, stuffed with potato and fried in gram-flour batter.",
+    "what": "Large, mild green chillies are stuffed with spiced potato, dipped in besan batter and deep-fried until crisp.",
+    "howToEat": "Eat it hot with chutney. The chilli is usually mild, but bite the tip first to check.",
+    "vegNote": "Vegetarian and usually vegan, but check if it's fried in ghee.",
+    "spots": [
+      { "name": "Ram Niwas Garden Pakode", "area": "mi-road", "lat": 26.9126, "lng": 75.8183, "hours": { "open": "16:00", "close": "22:00", "closedDays": [] }, "note": "A cart near Albert Hall. Perfect while waiting for the lights to come on.", "isDemo": true }
+    ]
+  },
+  {
+    "slug": "ghewar",
+    "name": "Ghewar",
+    "nameHi": "घेवर",
+    "illustration": "ghewar",
+    "veg": true,
+    "spice": 1,
+    "bestTime": "evening",
+    "bestTimeLabel": "After lunch or an evening treat",
+    "hook": "A lacy, honeycomb disc of fried batter, soaked in syrup. Festive and messy.",
+    "what": "Batter is poured into hot ghee to make a crisp, web-like disc, then soaked in sugar syrup and often topped with sweetened cream (malai) and nuts.",
+    "howToEat": "Break a piece with your fingers or a spoon. Malai ghewar is richer; plain is crunchier. Share one; it's big.",
+    "vegNote": "Vegetarian. Made with ghee and milk, so not vegan. Most special around the monsoon festivals of Teej and Raksha Bandhan, but many sweet shops sell it year-round.",
+    "spots": [
+      { "name": "Mithaas Bhandar", "area": "old-city", "lat": 26.9227, "lng": 75.8242, "hours": { "open": "09:00", "close": "21:30", "closedDays": [] }, "note": "Old-style sweet shop near the palace. Ask for a small piece to taste first.", "isDemo": true },
+      { "name": "Gulabi Mishthan", "area": "c-scheme", "lat": 26.9058, "lng": 75.8031, "hours": { "open": "10:00", "close": "22:00", "closedDays": [] }, "note": "Packs ghewar in boxes that survive a flight, mostly.", "isDemo": true }
+    ]
+  },
+  {
+    "slug": "laal-maas",
+    "name": "Laal maas",
+    "nameHi": "लाल मांस",
+    "illustration": "curry",
+    "veg": false,
+    "spice": 3,
+    "bestTime": "dinner",
+    "bestTimeLabel": "Dinner, with bajra roti",
+    "hook": "Fiery red mutton curry, slow-cooked with Mathania chillies. Not for the faint-hearted.",
+    "what": "Mutton slow-cooked with yoghurt, garlic and plenty of red chillies, which give the deep red colour. A classic dish of Rajput kitchens.",
+    "howToEat": "Tear bajra roti or plain roti and scoop. Keep a glass of chaas or lassi nearby. You'll need it.",
+    "vegNote": "Non-vegetarian (mutton). Vegetarians: try gatte ki sabzi or ker sangri instead.",
+    "spots": [
+      { "name": "Mehfil-e-Rasoi", "area": "c-scheme", "lat": 26.9077, "lng": 75.8009, "hours": { "open": "19:00", "close": "23:00", "closedDays": [] }, "note": "Ask for 'thoda kam teekha' if you're new to it; they won't judge. Much.", "isDemo": true },
+      { "name": "Qila Dhaba", "area": "amer", "lat": 26.9842, "lng": 75.8497, "hours": { "open": "12:00", "close": "22:30", "closedDays": [] }, "note": "Rough-and-ready dhaba on the Amer road. Generous portions.", "isDemo": true }
+    ]
+  },
+  {
+    "slug": "gatte-ki-sabzi",
+    "name": "Gatte ki sabzi",
+    "nameHi": "गट्टे की सब्ज़ी",
+    "illustration": "curry",
+    "veg": true,
+    "spice": 2,
+    "bestTime": "lunch",
+    "bestTimeLabel": "Lunch, with roti and rice",
+    "hook": "Gram-flour dumplings in a tangy yoghurt curry. Desert cooking at its smartest.",
+    "what": "Dough made from besan (gram flour) and spices is rolled, boiled, sliced and simmered in a spiced yoghurt gravy. Made for a land where fresh vegetables were scarce.",
+    "howToEat": "With roti or rice. It's a staple of every Rajasthani thali, so you'll likely meet it there first.",
+    "vegNote": "Vegetarian. Contains dairy (yoghurt).",
+    "spots": [
+      { "name": "Gaon Ki Rasoi", "area": "sanganer", "lat": 26.8172, "lng": 75.7894, "hours": { "open": "11:30", "close": "21:30", "closedDays": [] }, "note": "Homely lunch stop after the printing workshops.", "isDemo": true },
+      { "name": "Pink Thali House", "area": "old-city", "lat": 26.9218, "lng": 75.8212, "hours": { "open": "11:00", "close": "22:00", "closedDays": [] }, "note": "Good-value thali with gatte, kadhi and bajra roti.", "isDemo": true }
+    ]
+  },
+  {
+    "slug": "lassi",
+    "name": "Lassi",
+    "nameHi": "लस्सी",
+    "illustration": "lassi",
+    "veg": true,
+    "spice": 1,
+    "bestTime": "anytime",
+    "bestTimeLabel": "Any hot afternoon",
+    "hook": "Thick, cold, sweet yoghurt in a clay kulhad, topped with malai.",
+    "what": "Yoghurt churned with sugar (or salt) and sometimes saffron or cardamom, served thick in a kulhad, a little clay cup.",
+    "howToEat": "Use the spoon for the malai on top first, then drink. Ask for 'meethi' (sweet) or 'namkeen' (salty).",
+    "vegNote": "Vegetarian; contains dairy. If your stomach is new to India, choose busy shops with fresh batches.",
+    "spots": [
+      { "name": "Malai Kulhad Corner", "area": "mi-road", "lat": 26.9158, "lng": 75.8115, "hours": { "open": "09:00", "close": "17:00", "closedDays": [] }, "note": "Thick enough to stand a spoon in. Sells out by late afternoon.", "isDemo": true },
+      { "name": "Chaupar Lassi Bhandar", "area": "old-city", "lat": 26.9244, "lng": 75.8251, "hours": { "open": "08:30", "close": "21:00", "closedDays": [] }, "note": "A handy stop after Jantar Mantar.", "isDemo": true }
+    ]
+  },
+  {
+    "slug": "masala-chai",
+    "name": "Masala chai",
+    "nameHi": "मसाला चाय",
+    "illustration": "chai",
+    "veg": true,
+    "spice": 1,
+    "bestTime": "anytime",
+    "bestTimeLabel": "Every few hours, honestly",
+    "hook": "Milky, sweet tea boiled with ginger and cardamom. Jaipur runs on it.",
+    "what": "Black tea boiled with milk, sugar and spices like ginger, cardamom and sometimes clove or black pepper. Served in small glasses or kulhads.",
+    "howToEat": "Sip it hot from the little glass. Pair with a kachori or a biscuit. Say 'cheeni kam' for less sugar.",
+    "vegNote": "Vegetarian; contains milk. Some stalls can make it without sugar if you ask.",
+    "spots": [
+      { "name": "Nahargarh Road Tapri", "area": "old-city", "lat": 26.9318, "lng": 75.8161, "hours": { "open": "06:30", "close": "20:00", "closedDays": [] }, "note": "Last chai stop before the climb to Nahargarh.", "isDemo": true },
+      { "name": "Amer Ghati Chai", "area": "amer", "lat": 26.9881, "lng": 75.8552, "hours": { "open": "06:00", "close": "19:00", "closedDays": [] }, "note": "Early-morning chai near the stepwell. The ginger is serious.", "isDemo": true }
+    ]
+  }
+]

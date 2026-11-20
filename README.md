@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kaarvaan (कारवाँ)
 
-## Getting Started
+**Find the real city: its crafts, its food, its people.**
+A mobile-first, installable culture guide for first-time travellers, starting with Jaipur.
 
-First, run the development server:
+Traveller-only version: no accounts, no payments, no backend. Everything a traveller saves, plans or photographs stays on their phone.
+
+## Run it locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build (all content pages are statically generated)
+npm run lint       # ESLint
+npm run typecheck  # tsc --noEmit
+npm test           # Vitest: haversine, open-now, smart order, share links, price gauge
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The service worker only registers in production builds (`npm run build && npm start`).
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push this folder to a GitHub repo.
+2. In Vercel: **Add New → Project**, import the repo, keep the **Next.js** preset (no build settings to change).
+3. Under **Environment Variables**, set:
+   - `NEXT_PUBLIC_SITE_URL`: your production URL, e.g. `https://kaarvaan.vercel.app`
+   - `NEXT_PUBLIC_KAARVAAN_WHATSAPP`: the Kaarvaan desk WhatsApp number, digits with country code (e.g. `9198XXXXXXXX`)
+4. **Deploy**, then check:
+   - home, a craft page (`/shop/rajasthan/bandhani`), a shop page, the planner (`/plan`), Memories (`/memories`) and price check (`/price-check`);
+   - "Add to Home Screen" on Android Chrome / iOS Safari installs the app;
+   - Settings → **Download Jaipur for offline**, then turn on airplane mode and browse.
+5. Vercel Analytics: enable it in the project's Analytics tab (anonymous page views only).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+QR codes for hotel receptions should point to `https://<site>/?from=hotel&area=<area>`, where `<area>` is one of `old-city`, `amer`, `sanganer`, `bagru`, `c-scheme`, `mi-road`. This skips onboarding, switches to "I'm in Jaipur now" mode and pre-selects the area.
+
+## What's inside
+
+| Path | What |
+|---|---|
+| `app/` | Routes: home, `shop/[state]/[craft]/[shop]`, `experiences/{workshops,places,food}/[slug]`, `plan`, `plan/view`, `memories`, `memories/passport`, `saved`, `price-check`, `phrases`, `getting-around`, `about`, `how-we-choose`, `settings`, `privacy`, `styleguide` (noindex), `not-found`, `manifest.ts`, `opengraph-image.tsx`, `precache.json` |
+| `components/motifs/` | Buti, BlockPrintPattern, ToranBorder, Jharokha (+ ArchTop, ArchClip), Mandala, BandhaniDots, RangoliDivider, RouteLine, StampIcon, VerifiedSeal, PetalConfetti, PaperGrain |
+| `components/illustrations/` | Hand-drawn flat SVGs: crafts, places, food, camel, auto-rickshaw, desert dusk, Ananya comic panels |
+| `components/ui/` | Button, Card/ArchCard, Chip, Tabs, Sheet, Toast, SectionHeader, EmptyState, SampleRibbon, PreviewBanner, PriceGauge, FlipCard, Skeleton |
+| `lib/` | `types`, `data` (content + search), `store` (Zustand, persisted), `i18n`, `geo` (haversine, open-now in IST), `plan` (smart order, time windows, share-link encoding), `price`, `whatsapp`, `maps`, `share`, `idb` (photos in IndexedDB) |
+| `data/*.json` | All content: 36 states/UTs, 5 crafts, 15 sample shops, 4 workshops, 10 places, 8 dishes, 32 phrases, 13 tips |
+| `public/sw.js` | Hand-written service worker |
+| `tests/` | Vitest unit tests |
+
+## Before launch: replace these
+
+- **`NEXT_PUBLIC_KAARVAAN_WHATSAPP`**: the placeholder `91XXXXXXXXXX` must become the real desk number.
+- **Shops, workshop hosts and food stalls** in `data/shops.json`, `data/workshops.json` and the `spots` in `data/food.json` are **fictional samples** (`isDemo: true`), as are their phone and WhatsApp numbers. Replace them with real makers after your verification visits, then remove the "Sample listing" ribbons and the preview banner (`components/ui/PreviewBanner.tsx`).
+- **Prices** in `data/crafts.json` are indicative estimates. Re-check them during visits.
+- Places are real public landmarks with general descriptions; check opening hours before launch.
+
+## Decisions
+
+- **Next.js 16.4 instead of 14.** Every 14.x release has open security advisories (fixed only in the current line), so the app uses the latest stable Next. "Cache Components" is switched off because the app is fully static.
+- **Tailwind v4** (CSS-first config): the palette lives as `@theme` tokens in `app/globals.css`, e.g. `bg-rani`, `text-indigo`, `border-sand`.
+- **Contrast.** `muted` is `#6E626A` (slightly darker than the brief's `#7A6E75`) so small grey text passes WCAG AA on ivory. Marigold is never used for small text; `marigold-ink` (`#8A5A12`) is used instead.
+- **Hand-written service worker** rather than Serwist: simple, no build plugin, works with Turbopack. It caches the app shell on install, pages as you browse, and every page on "Download Jaipur for offline". Content JSON and illustrations are bundled into the JS, so caching pages caches them too.
+- **Persisted state** uses Zustand with `skipHydration`, rehydrated on mount, so server HTML never mismatches. Persisted UI waits for hydration and shows skeletons first.
+- **Location** is requested only on tap. Coordinates live in memory only; the single network call is BigDataCloud's free client reverse-geocoder. A 150 km radius around Jaipur also counts as "in Rajasthan" so it still works when that call fails.
+- **Open now** is always computed in Jaipur time (IST), whatever the phone's timezone.
+- **Smart order:** day trips (Abhaneri) and Amer first, then printing villages, old city bazaars, newer city; food last unless it's a breakfast dish.
+- **Price gauge:** at or under the top of the range is Fair, up to 1.5× is A bit high, above is Too high. Below 60% of the bottom of the range gets a "surprisingly low: check it's not a copy" note.
+- **Share links** encode the plan as base64url JSON in `?p=`; decoding validates every stop, so a crafted link can't inject content.
+- **Workshop slot requests and problem reports** go to the Kaarvaan desk WhatsApp (not the sample hosts), so a real person can relay them.
+- **Hindi toggle** translates the interface chrome (navigation, buttons, key headings). Content stays English with Hindi names alongside, as the brief specifies.
+- **OpenGraph image** uses the default font of `next/og`, so it builds offline.
+- **Onboarding and search are lazy-loaded** (`next/dynamic`), so most page views don't download them.
+- **Entrance animations are pure CSS** (page fade-in, hero and option cards), so server HTML paints before JavaScript runs. Framer Motion handles the interactive motion: route line, tabs, sheets, confetti and the gauge needle.
+- **Only Latin font files are preloaded.** Devanagari and Kalam load on demand via `unicode-range`.
+
+## Verification status (local production build, 360px phone)
+
+- `next build` (100 static pages), `eslint .`, `tsc --noEmit` and `vitest` (27 tests) all pass.
+- Click-through in Chromium: onboarding (3 steps, skippable), QR entry, mode toggle, Hindi toggle, save / add to plan / I visited (confetti + passport stamp), quiz, "Plan my day for me", share link → read-only view, photo upload (compressed to ≤1600px, stored in IndexedDB), passport, search, price gauge, 404. No page errors.
+- Offline: "Download Jaipur for offline" caches all 93 pages in ~2s. Deep pages and client-side navigation then work with the network off, and the offline pill shows.
+- Lighthouse (mobile, simulated slow 4G, local `next start`): Accessibility, Best Practices and SEO score 100. Performance scores 81–86 on content pages, under the 90 target. On a first visit to `/` the onboarding overlay is the LCP element and needs JavaScript. Next steps if you want 90+: move content JSON out of the shared client bundle (load search data on demand) and server-render the home hero below the onboarding. Re-measure on the Vercel deployment, which serves over HTTP/2 from a CDN.

@@ -1,0 +1,222 @@
+[
+  {
+    "slug": "bandhani",
+    "name": "Bandhani",
+    "nameHi": "बांधनी",
+    "hook": "Thousands of tiny knots, tied by hand, opened like a secret.",
+    "origin": "Tie-and-dye practised across Rajasthan and Gujarat for centuries. In Jaipur you'll find it, and its striped cousin laheriya, all over Johari and Bapu Bazaar.",
+    "story": [
+      "A maker pinches a tiny point of cloth and wraps it tight with thread, again and again, sometimes thousands of times.",
+      "The cloth goes into the dye; every knot keeps a little circle of the old colour safe.",
+      "Then the knots are pulled open, and a field of dots appears like stars on a dupatta."
+    ],
+    "timePerPiece": "2 days for a simple cotton dupatta to several weeks for a fine silk saree",
+    "process": [
+      { "title": "Mark", "text": "The design is stamped onto the cloth with washable colour, often using a perforated sheet as a guide." },
+      { "title": "Tie", "text": "Each dot is pinched up and tightly bound with thread. Fine work can mean dots smaller than a grain of rice." },
+      { "title": "Dye", "text": "The tied cloth is dyed, lightest colour first. For more colours, more areas are tied and the cloth is dyed again." },
+      { "title": "Open", "text": "The cloth is dried and the knots are pulled open by hand. The little crinkles are left in on purpose." }
+    ],
+    "checks": [
+      { "real": "Dots are slightly irregular in size and spacing. Hands, not machines.", "copy": "Every dot is a perfect, identical circle in a perfect grid." },
+      { "real": "Dots are raised, with a small crinkle you can feel with your fingertips.", "copy": "The surface is completely flat and smooth." },
+      { "real": "Turn it over: the pattern shows clearly on the back too, because the dye went through.", "copy": "The back is pale or blank. The pattern was printed on one side." },
+      { "real": "Each dot often has a tiny coloured centre where the thread sat.", "copy": "Dots are a solid flat colour with sharp printed edges." },
+      { "real": "Stretch a dot gently and the cloth springs back into its little puckers.", "copy": "Nothing to stretch. It feels like any printed fabric." }
+    ],
+    "prices": [
+      { "item": "Cotton bandhani dupatta", "min": 600, "max": 1500 },
+      { "item": "Georgette or chiffon bandhani dupatta", "min": 1500, "max": 4000 },
+      { "item": "Laheriya or bandhani stole", "min": 400, "max": 1200 },
+      { "item": "Fine-dot silk bandhani saree", "min": 5000, "max": 20000 }
+    ],
+    "gifts": [
+      { "name": "Laheriya cotton stole", "budget": "under-1000", "why": "Light, easy to pack, and it brightens a plain kurta or a black tee." },
+      { "name": "Georgette bandhani dupatta", "budget": "1000-3000", "why": "The classic Jaipur gift. Mothers and aunties approve instantly." },
+      { "name": "Fine-dot silk saree", "budget": "3000-plus", "why": "An heirloom. Ask the maker how many knots went in; the answer is a story in itself." }
+    ],
+    "quiz": [
+      { "q": "You flip a bandhani dupatta over. What should you see?", "options": ["A blank back", "The dot pattern on the back too", "A printed label"], "answer": 1, "explain": "Dye goes right through tied cloth, so real bandhani shows the pattern on both sides." },
+      { "q": "Real bandhani dots feel…", "options": ["Raised and a little crinkly", "Perfectly flat", "Rubbery"], "answer": 0, "explain": "The knots leave tiny puckers. A flat surface usually means it was printed." },
+      { "q": "All the dots are identical and in a perfect grid. Most likely?", "options": ["Very skilled hand-tying", "A printed copy", "Laheriya"], "answer": 1, "explain": "Hand-tied dots always vary a little. Machine-perfect usually means machine-made." }
+    ],
+    "phrases": ["how-much", "handmade-q", "little-less", "final-price"],
+    "tip": "Rub a dot between your fingers. If it crinkles, smile. If it's flat, walk on."
+  },
+  {
+    "slug": "block-print",
+    "name": "Hand-block print",
+    "nameHi": "हाथ ठप्पा छपाई",
+    "hook": "Carved wooden blocks, a steady hand, and a thousand gentle thumps.",
+    "origin": "Printed for generations in Sanganer and Bagru, two towns just outside Jaipur. Sanganer is known for fine florals on light grounds; Bagru for earthy colours and dabu mud-resist.",
+    "story": [
+      "A craftsman carves a pattern into a block of wood, often sheesham, chip by tiny chip.",
+      "A printer dips the block in colour and presses it onto cloth, thump, lift, move, thump, all down a long table.",
+      "Each colour needs its own block, so one flower can mean three or four careful passes."
+    ],
+    "timePerPiece": "1 day for a simple stole to about a week for a multi-colour bedsheet with dabu",
+    "process": [
+      { "title": "Carve", "text": "The design is drawn and hand-carved into wooden blocks. One block per colour in the design." },
+      { "title": "Prepare", "text": "The cloth is washed and sometimes soaked so the dyes take evenly. It's pinned flat on a padded table." },
+      { "title": "Print", "text": "The printer stamps the block again and again, lining up each repeat by eye. Outline first, then fill colours." },
+      { "title": "Fix", "text": "The cloth is dried in the sun, then washed or steamed to fix the colour. Bagru's dabu prints add mud-resist layers before dyeing." }
+    ],
+    "checks": [
+      { "real": "Tiny misalignments or overlaps where one block meets the next.", "copy": "Every join is perfect, with no seams at all." },
+      { "real": "Colour is slightly uneven, a bit darker where the block pressed hardest.", "copy": "Colour is flat and identical across the whole cloth." },
+      { "real": "The pattern repeats at the size of a hand-held block, roughly 10 to 20 cm.", "copy": "Very long repeats or huge unbroken designs, typical of screen or digital print." },
+      { "real": "The print soaks into the fibres and shows faintly on the back.", "copy": "Ink sits on top like a layer and the back is almost white." },
+      { "real": "The seller can show you the wooden blocks used, or tell you where it was printed.", "copy": "No blocks, no village, just 'Jaipuri print'." }
+    ],
+    "prices": [
+      { "item": "Hand-block printed fabric", "min": 150, "max": 400, "unit": "per metre" },
+      { "item": "Cotton stole or dupatta", "min": 350, "max": 900 },
+      { "item": "Dabu natural-dye saree", "min": 1800, "max": 4500 },
+      { "item": "Double bedsheet with 2 pillow covers", "min": 1200, "max": 3000 }
+    ],
+    "gifts": [
+      { "name": "Set of block-printed napkins", "budget": "under-1000", "why": "Flat, light, and a little bit of Sanganer on every dinner table." },
+      { "name": "Double bedsheet set", "budget": "1000-3000", "why": "Everyone back home will use it. Pick a soft cotton and a two-colour print." },
+      { "name": "Indigo dabu saree from Bagru", "budget": "3000-plus", "why": "Natural dye, mud-resist, made in a village you can visit. Hard to beat." }
+    ],
+    "quiz": [
+      { "q": "Where two block repeats meet, real hand-block print usually shows…", "options": ["Nothing at all", "Tiny overlaps or gaps", "A stitched seam"], "answer": 1, "explain": "Blocks are lined up by eye, so small misalignments are the signature of a hand." },
+      { "q": "What is 'dabu'?", "options": ["A kind of silk", "A mud-resist paste used before dyeing", "A wooden mallet"], "answer": 1, "explain": "Dabu is a paste of mud and other natural ingredients pressed on to keep dye out, giving a soft, crackled look." },
+      { "q": "Which is a warning sign for screen print sold as block print?", "options": ["Slightly uneven colour", "A repeat the size of your palm", "Perfectly even colour with very long repeats"], "answer": 2, "explain": "Screens print huge, perfectly even repeats. Hand blocks are small and a bit uneven." }
+    ],
+    "phrases": ["how-much", "who-made", "best-price", "little-less"],
+    "tip": "Look for the seams between repeats. A wobble there is a fingerprint, not a flaw."
+  },
+  {
+    "slug": "blue-pottery",
+    "name": "Blue pottery",
+    "nameHi": "नीली पॉटरी",
+    "hook": "Not clay at all, and that's the whole secret.",
+    "origin": "A glazed craft that came to Jaipur with Persian and Mughal influences and was encouraged by the city's rulers. Its body is made mostly from quartz powder, not clay.",
+    "story": [
+      "Makers mix ground quartz, glass powder and a natural gum into a dough instead of using clay.",
+      "Every piece is shaped, dried and then painted by hand in cobalt blue, turquoise and white.",
+      "It's fired at a low heat, so it stays light and glassy, but also a little delicate."
+    ],
+    "timePerPiece": "About a week for a small bowl, from mixing to firing, with lots of drying time",
+    "process": [
+      { "title": "Mix", "text": "Quartz powder, glass powder, fuller's earth and natural gum are kneaded into a dough." },
+      { "title": "Shape", "text": "The dough is pressed into moulds or shaped by hand, then dried and smoothed with sandpaper." },
+      { "title": "Paint", "text": "Designs are painted freehand with brushes, in cobalt blue, turquoise and other mineral colours." },
+      { "title": "Glaze & fire", "text": "Pieces are dipped in glaze and fired in a kiln at a relatively low temperature." }
+    ],
+    "checks": [
+      { "real": "Surprisingly light for its size. The quartz body is not dense.", "copy": "Heavy, thick clay body that feels solid." },
+      { "real": "Brush strokes vary a little; flowers on the same plate are not identical.", "copy": "Perfect repeated motifs, often a printed decal." },
+      { "real": "Glossy glaze with tiny pinholes or small bubbles here and there.", "copy": "Totally uniform, factory-smooth glaze." },
+      { "real": "Turn it over: the base is whitish and gritty-looking where unglazed.", "copy": "Reddish or brown clay shows on the base." },
+      { "real": "Mostly blues, turquoise and white, sometimes with green or yellow.", "copy": "Bright off-palette colours like neon pink or purple." }
+    ],
+    "prices": [
+      { "item": "Ceramic knob", "min": 60, "max": 150, "unit": "each" },
+      { "item": "Small bowl or coaster", "min": 150, "max": 450 },
+      { "item": "Hand-painted tile (about 15 cm)", "min": 150, "max": 400 },
+      { "item": "Medium vase", "min": 800, "max": 2500 }
+    ],
+    "gifts": [
+      { "name": "Set of four drawer knobs", "budget": "under-1000", "why": "Tiny, packable and they turn any plain cupboard into a little bit of Jaipur." },
+      { "name": "Hand-painted serving bowl", "budget": "1000-3000", "why": "Pretty on a shelf, perfect for dry snacks. Ask them to bubble-wrap it twice." },
+      { "name": "Large painted vase or platter", "budget": "3000-plus", "why": "A statement piece. Many workshops can ship it home for you, just ask." }
+    ],
+    "quiz": [
+      { "q": "Real Jaipur blue pottery is made mainly from…", "options": ["Red clay", "Quartz powder", "Plastic resin"], "answer": 1, "explain": "The body is quartz-based, which is why it feels light and glassy." },
+      { "q": "You pick up a vase and it's very heavy. That suggests…", "options": ["A clay copy", "Extra-fine work", "It's a lamp"], "answer": 0, "explain": "Quartz pieces are light. Heavy usually means ordinary clay, painted blue." },
+      { "q": "Two flowers on the same plate look slightly different. Good or bad?", "options": ["Bad, it's a defect", "Good, it's hand-painted", "It doesn't matter"], "answer": 1, "explain": "Freehand painting always varies a little. Identical motifs often mean a printed decal." }
+    ],
+    "phrases": ["how-much", "handmade-q", "too-expensive", "final-price"],
+    "tip": "Pick it up before you fall in love. Light = real. Then check the base."
+  },
+  {
+    "slug": "kundan-meenakari",
+    "name": "Kundan-Meenakari",
+    "nameHi": "कुंदन-मीनाकारी",
+    "hook": "Stones in front, painted enamel behind. Turn it over.",
+    "origin": "A royal jewellery tradition that flourished in Jaipur. Kundan sets stones in refined gold foil; meenakari fills engraved metal with coloured enamel, often on the back of the same piece.",
+    "story": [
+      "An engraver cuts tiny channels into the metal, and an enameller fills them with colour and fires it, one shade at a time.",
+      "A setter presses glass or gemstones into place with thin layers of pure gold foil, the kundan.",
+      "Often several families work on one piece, which is why a good set takes time and costs what it does."
+    ],
+    "timePerPiece": "A few days for a simple pair of earrings to several weeks for a bridal set",
+    "process": [
+      { "title": "Shape", "text": "A goldsmith makes the frame, or ghaat, in gold or silver." },
+      { "title": "Engrave & enamel", "text": "Patterns are engraved, filled with enamel colours and fired, usually from the hardest-firing colour down." },
+      { "title": "Set", "text": "Stones are set using layers of fine gold foil pressed in by hand." },
+      { "title": "Finish", "text": "The piece is polished, and pearls or beads are strung on for jhumkas and necklaces." }
+    ],
+    "checks": [
+      { "real": "Turn it over: real meenakari often has detailed, glossy enamel work on the back.", "copy": "The back is plain plated metal or flat painted colour." },
+      { "real": "Enamel looks glassy and slightly raised, set into engraved grooves.", "copy": "Colour looks like paint and scratches off with a fingernail." },
+      { "real": "Stones are held by a thin gold-foil border, pressed in by hand.", "copy": "Stones are glued in, with visible glue or rough edges." },
+      { "real": "The seller tells you the base metal (gold or silver) and gives a bill that says so.", "copy": "Vague answers about the metal, or 'gold' with no bill." },
+      { "real": "Small irregularities in the enamel and setting from hand work.", "copy": "Perfectly identical cast pieces, many of the same design on the counter." }
+    ],
+    "prices": [
+      { "item": "Meenakari brass trinket box", "min": 400, "max": 1500 },
+      { "item": "Meenakari bangle on brass or copper", "min": 600, "max": 2000 },
+      { "item": "Silver kundan-meena jhumkas", "min": 2500, "max": 8000, "unit": "per pair" },
+      { "item": "Silver pendant set with earrings", "min": 6000, "max": 18000 }
+    ],
+    "gifts": [
+      { "name": "Meenakari trinket box", "budget": "under-1000", "why": "Colourful, tiny, and safe to pack. Ask them to show you the enamel inside the lid." },
+      { "name": "Meenakari bangle", "budget": "1000-3000", "why": "Wearable, cheerful and easy to size. Bring a bangle from home to match." },
+      { "name": "Silver kundan-meena jhumkas", "budget": "3000-plus", "why": "The proper Jaipur heirloom. Insist on a bill that names the metal." }
+    ],
+    "quiz": [
+      { "q": "Where should you look first to check meenakari?", "options": ["The price tag", "The back of the piece", "The box"], "answer": 1, "explain": "Fine meenakari often lives on the back. A plain back is a hint it's a copy." },
+      { "q": "What does 'kundan' refer to?", "options": ["A type of stone", "Fine gold foil used to set stones", "A Jaipur street"], "answer": 1, "explain": "Kundan is the refined gold foil pressed around stones to hold them." },
+      { "q": "Good practice when buying precious-metal jewellery?", "options": ["Pay cash, no bill", "Get a bill stating the metal", "Buy only on the first visit"], "answer": 1, "explain": "A clear bill with the metal and weight protects you, and honest sellers are happy to give one." }
+    ],
+    "phrases": ["how-much", "best-price", "little-less", "think-and-return"],
+    "tip": "Always flip it. The back tells you more than the salesman will."
+  },
+  {
+    "slug": "mojari",
+    "name": "Mojari",
+    "nameHi": "मोजड़ी",
+    "hook": "Hand-stitched leather slippers that start stiff and end up yours.",
+    "origin": "Traditional leather footwear of Rajasthan and Punjab, often called jootis. Jaipur's bazaars have whole lanes of them, plain, embroidered and beaded.",
+    "story": [
+      "A cobbler cuts the leather sole and upper by hand, with no left and right at first.",
+      "Embroiderers add thread, sequins or beadwork to the upper, often women working from home.",
+      "It's stitched together by hand, and slowly takes the shape of whoever wears it."
+    ],
+    "timePerPiece": "About a day for a plain pair to 3 or 4 days for heavy embroidery",
+    "process": [
+      { "title": "Cut", "text": "Sole and upper are cut from leather by hand, using simple templates." },
+      { "title": "Decorate", "text": "The upper is embroidered with thread, zari, mirrors or beads." },
+      { "title": "Stitch", "text": "Upper and sole are hand-stitched together with strong thread, often visible along the edge." },
+      { "title": "Finish", "text": "The pair is shaped on a wooden last, trimmed and cleaned." }
+    ],
+    "checks": [
+      { "real": "A leather sole with hand stitching visible along the edge.", "copy": "A moulded rubber or plastic sole, glued on." },
+      { "real": "Stiff at first. It softens and moulds to your foot over a week or two.", "copy": "Squishy and soft straight off the shelf." },
+      { "real": "Smells of leather; the inside is leather or cotton lining.", "copy": "Smells of glue or plastic; synthetic shiny lining." },
+      { "real": "Embroidery is slightly uneven, with knots visible on the inside of the upper.", "copy": "Machine embroidery that is perfectly even, or printed patterns." },
+      { "real": "Many traditional pairs are straight-cut, with no fixed left or right.", "copy": "Heavily shaped soles with foam padding." }
+    ],
+    "prices": [
+      { "item": "Kids' mojari", "min": 350, "max": 800, "unit": "per pair" },
+      { "item": "Plain leather mojari", "min": 500, "max": 1200, "unit": "per pair" },
+      { "item": "Embroidered or beaded mojari", "min": 1000, "max": 2500, "unit": "per pair" },
+      { "item": "Heavy zari wedding mojari", "min": 2000, "max": 4500, "unit": "per pair" }
+    ],
+    "gifts": [
+      { "name": "Kids' embroidered mojari", "budget": "under-1000", "why": "Ridiculously cute and fits in a jacket pocket. Bring the child's foot length." },
+      { "name": "Embroidered leather pair", "budget": "1000-3000", "why": "Goes with jeans and with a lehenga. Try both feet and walk around the shop." },
+      { "name": "Zari wedding mojari", "budget": "3000-plus", "why": "For a groom, a bride or a very fancy party. Order a day ahead for your size." }
+    ],
+    "quiz": [
+      { "q": "A real leather mojari feels… on day one.", "options": ["Stiff", "Spongy", "Wet"], "answer": 0, "explain": "Leather soles are stiff at first and soften with wear. Instant squish often means foam and rubber." },
+      { "q": "What's a sign of a hand-made sole?", "options": ["Moulded rubber tread", "Visible hand stitching at the edge", "A barcode"], "answer": 1, "explain": "Hand-stitched leather soles show their stitches around the edge." },
+      { "q": "Your new mojari pinches a bit. Best move?", "options": ["Throw it away", "Wear it around for short walks so it moulds", "Soak it in water for a day"], "answer": 1, "explain": "A little snug is normal. Short walks help the leather shape to your foot." }
+    ],
+    "phrases": ["how-much", "too-expensive", "little-less", "just-looking"],
+    "tip": "Snug is fine, painful is not. Walk ten steps in the shop before you pay."
+  }
+]

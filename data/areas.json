@@ -1,0 +1,9 @@
+[
+  { "slug": "abhaneri", "name": "Abhaneri", "detail": "Chand Baori stepwell day trip, about 95 km east", "lat": 27.0074, "lng": 76.6066, "dayOrder": 0 },
+  { "slug": "amer", "name": "Amer", "detail": "Amber Fort, Jaigarh and the old town below", "lat": 26.9855, "lng": 75.8513, "dayOrder": 1 },
+  { "slug": "sanganer", "name": "Sanganer", "detail": "Hand-block printing town, south of the city", "lat": 26.8155, "lng": 75.788, "dayOrder": 2 },
+  { "slug": "bagru", "name": "Bagru", "detail": "Printing village known for dabu mud-resist", "lat": 26.813, "lng": 75.545, "dayOrder": 2 },
+  { "slug": "old-city", "name": "Old City", "detail": "Johari / Bapu / Tripolia Bazaar", "lat": 26.9215, "lng": 75.8235, "dayOrder": 3 },
+  { "slug": "c-scheme", "name": "C-Scheme", "detail": "Cafés, leafy streets and modern Jaipur", "lat": 26.9063, "lng": 75.8024, "dayOrder": 4 },
+  { "slug": "mi-road", "name": "MI Road", "detail": "Mirza Ismail Road, Albert Hall and Ram Niwas Garden", "lat": 26.916, "lng": 75.809, "dayOrder": 4 }
+]
