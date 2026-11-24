@@ -10,7 +10,10 @@ interface Props {
 /** Round rubber-stamp badge with a slightly rough edge. */
 export function VerifiedSeal({ date = "2026", size = 76, className = "", label = "Visited by Kaarvaan" }: Props) {
   const id = useId().replace(/:/g, "");
-  const text = `${label} · ${date} · `;
+  // Small seals are too small for legible circular text: show ring + check only.
+  // Larger seals use short text sized to render at ~12px or more.
+  const showText = size >= 90;
+  const text = `VISITED · ${date} · `;
   return (
     <svg
       width={size}
@@ -31,11 +34,15 @@ export function VerifiedSeal({ date = "2026", size = 76, className = "", label =
         <circle cx="50" cy="50" r="47" fill="none" stroke="#E8A33D" strokeWidth="3" />
         <circle cx="50" cy="50" r="42" fill="#2E7D5B" />
         <circle cx="50" cy="50" r="24" fill="none" stroke="#FBF6EC" strokeWidth="1.2" strokeDasharray="2 2.5" />
-        <text fontSize="8.6" fontWeight="700" letterSpacing="0.6" fill="#FBF6EC" fontFamily="var(--font-mukta), sans-serif">
-          <textPath href={`#c-${id}`} textLength="205" lengthAdjust="spacingAndGlyphs">
-            {text.toUpperCase()}
-          </textPath>
-        </text>
+        {showText ? (
+          <text fontSize={1200 / size} fontWeight="700" letterSpacing="0.4" fill="#FBF6EC" fontFamily="var(--font-mukta), sans-serif" aria-hidden="true">
+            <textPath href={`#c-${id}`} textLength="205" lengthAdjust="spacingAndGlyphs">
+              {text.toUpperCase()}
+            </textPath>
+          </text>
+        ) : (
+          <circle cx="50" cy="50" r="34" fill="none" stroke="#F2C14E" strokeWidth="1.4" strokeDasharray="0.1 4.5" strokeLinecap="round" />
+        )}
         <path d="M38 51 L47 60 L63 41" fill="none" stroke="#F2C14E" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
       </g>
     </svg>

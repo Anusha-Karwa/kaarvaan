@@ -40,7 +40,7 @@ export function BottomNav() {
                   ring={active ? "#E8A33D" : "transparent"}
                   className="transition-all"
                 />
-                <span className={`text-[11px] leading-tight ${active ? "font-bold text-indigo" : "font-medium text-muted"}`}>{t(tab.key)}</span>
+                <span className={`text-xs leading-tight ${active ? "font-bold text-indigo" : "font-medium text-muted"}`}>{t(tab.key)}</span>
               </Link>
             </li>
           );

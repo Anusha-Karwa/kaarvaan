@@ -54,6 +54,8 @@ const useIsoLayoutEffect = typeof window === "undefined" ? useEffect : useLayout
 /** `cards` holds server-rendered cards keyed "w:slug", "p:slug", "d:slug" (keeps illustrations out of the JS bundle). */
 export function ExperiencesTabs({ cards }: { cards: Record<string, ReactNode> }) {
   const [tab, setTab] = useState<TabId>("workshops");
+  // Only animate panels the visitor switches to; the first panel renders visible from the server.
+  const [switched, setSwitched] = useState(false);
   const [area, setArea] = useState<AreaSlug | "all">("all");
   const [food, setFood] = useState<FoodFilter>("all");
   const pendingRestore = useRef<number | null>(null);
@@ -106,6 +108,7 @@ export function ExperiencesTabs({ cards }: { cards: Record<string, ReactNode> })
   const onChange = useCallback(
     (id: string) => {
       if (!isTab(id) || id === tab) return;
+      setSwitched(true);
       writeScroll(tab, window.scrollY);
       const top = tabsRef.current ? tabsRef.current.getBoundingClientRect().top + window.scrollY - 80 : 0;
       const saved = readScroll(id);
@@ -139,10 +142,11 @@ export function ExperiencesTabs({ cards }: { cards: Record<string, ReactNode> })
         aria-labelledby={`tab-${tab}`}
         tabIndex={0}
         className="pt-6 outline-none"
-        initial={motionOK ? { opacity: 0, y: 6 } : false}
+        initial={motionOK && switched ? { opacity: 0, y: 6 } : false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.22 }}
       >
+        <h2 className="sr-only">{TABS.find((t) => t.id === tab)?.label}</h2>
         {tab === "workshops" && (
           <>
             <p className="max-w-2xl text-[15px] text-ink/85">

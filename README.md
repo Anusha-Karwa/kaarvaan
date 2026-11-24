@@ -68,13 +68,15 @@ QR codes for hotel receptions should point to `https://<site>/?from=hotel&area=<
 - **Workshop slot requests and problem reports** go to the Kaarvaan desk WhatsApp (not the sample hosts), so a real person can relay them.
 - **Hindi toggle** translates the interface chrome (navigation, buttons, key headings). Content stays English with Hindi names alongside, as the brief specifies.
 - **OpenGraph image** uses the default font of `next/og`, so it builds offline.
-- **Onboarding and search are lazy-loaded** (`next/dynamic`), so most page views don't download them.
-- **Entrance animations are pure CSS** (page fade-in, hero and option cards), so server HTML paints before JavaScript runs. Framer Motion handles the interactive motion: route line, tabs, sheets, confetti and the gauge needle.
-- **Only Latin font files are preloaded.** Devanagari and Kalam load on demand via `unicode-range`.
+- **Illustrations are static SVG files.** `npm run build:illustrations` (run automatically before every build) renders the React drawings in `components/illustrations/registry.tsx` to `public/illustrations/*.svg`, and `<Illustration>` shows them as `<img>`. Inlining them made the home page 880 KB of HTML with 4,500+ SVG nodes. Edit a drawing in `registry.tsx`, then rebuild.
+- **Server-first pages.** Home sections and content cards render on the server. Client components are small islands (greeting, location, mode sections, shop cards with live "Open now"). Translated headings inside server sections use the tiny `<T k="…"/>` client component.
+- **Pre-paint script.** A few lines in `app/layout.tsx` read saved preferences before first paint. They show the server-rendered onboarding for first-time visitors and hide the preview banner once dismissed, with no JavaScript wait and no layout shift.
+- **Framer Motion loads lazily** (`LazyMotion` + `m` components). Search, planner sheets and the planner's extras load on first use.
+- **Content is split per collection** (`lib/content/*`). Client components import only the slice they need; `lib/data.ts` stays the full barrel for server code.
 
 ## Verification status (local production build, 360px phone)
 
 - `next build` (100 static pages), `eslint .`, `tsc --noEmit` and `vitest` (27 tests) all pass.
 - Click-through in Chromium: onboarding (3 steps, skippable), QR entry, mode toggle, Hindi toggle, save / add to plan / I visited (confetti + passport stamp), quiz, "Plan my day for me", share link → read-only view, photo upload (compressed to ≤1600px, stored in IndexedDB), passport, search, price gauge, 404. No page errors.
 - Offline: "Download Jaipur for offline" caches all 93 pages in ~2s. Deep pages and client-side navigation then work with the network off, and the offline pill shows.
-- Lighthouse (mobile, simulated slow 4G, local `next start`): Accessibility, Best Practices and SEO score 100. Performance scores 81–86 on content pages, under the 90 target. On a first visit to `/` the onboarding overlay is the LCP element and needs JavaScript. Next steps if you want 90+: move content JSON out of the shared client bundle (load search data on demand) and server-render the home hero below the onboarding. Re-measure on the Vercel deployment, which serves over HTTP/2 from a CDN.
+- Lighthouse on the live site (mobile, simulated slow 4G), 24 Nov 2026: Performance 90–95 on all 12 main pages (home 90, shop pages 92–95, planner 90, price check 93, phrasebook 94). Accessibility, Best Practices and SEO score 100 apart from the two fixes in the latest commit. Scores vary ±3 between runs.
