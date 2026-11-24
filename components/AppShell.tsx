@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { Suspense, useEffect, useState, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { WifiOff } from "lucide-react";
 import { useStore } from "@/lib/store";
@@ -90,7 +90,9 @@ export function AppShell({ children }: { children: ReactNode }) {
           so it paints without waiting for JavaScript. Unmounted once the store says onboarding is done. */}
       {!skipOnboarding && (!hydrated || !onboarded) && (
         <div className="onboarding-gate">
-          <Onboarding />
+          <Suspense>
+            <Onboarding />
+          </Suspense>
         </div>
       )}
       {searchOpen && <SearchSheet />}

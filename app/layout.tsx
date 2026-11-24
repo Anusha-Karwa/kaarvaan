@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import { Kalam, Mukta, Rozha_One, Tiro_Devanagari_Hindi } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -58,13 +59,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+        {/* Suspense boundaries let React hydrate each region as its own interruptible chunk
+            (selective hydration), so no single long task blocks the main thread. */}
         <AppShell>
-          <Header />
+          <Suspense>
+            <Header />
+          </Suspense>
           <main id="main" className="min-h-[60vh] pb-28 md:pb-12">
-            {children}
+            <Suspense>{children}</Suspense>
           </main>
-          <Footer />
-          <BottomNav />
+          <Suspense>
+            <Footer />
+          </Suspense>
+          <Suspense>
+            <BottomNav />
+          </Suspense>
         </AppShell>
         {process.env.VERCEL && <Analytics />}
       </body>
