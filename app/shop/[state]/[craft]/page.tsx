@@ -15,7 +15,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Chip } from "@/components/ui/Chip";
 import { Handnote } from "@/components/ui/Handnote";
 import { ButtonLink } from "@/components/ui/Button";
-import { CRAFT_TINT, WorkshopCard } from "@/components/Cards";
+import { CRAFT_TINT, CraftTile, WorkshopCard } from "@/components/Cards";
 import { Quiz, RealVsCopy, ShopList } from "@/components/shop/CraftInteractive";
 
 export const dynamicParams = false;
@@ -92,7 +92,7 @@ export default async function CraftPage({ params }: { params: Promise<{ state: s
           <div className="relative mx-auto h-48 w-40 sm:h-56 sm:w-48">
             <Jharokha fill="#FBF6EC" stroke="#1F2A5C" aspect={1.2} rise={0.34} />
             <div className="absolute inset-x-3 bottom-3 top-12 flex items-end justify-center">
-              <Illustration name={craft.slug} className="h-full w-auto" title={`Illustration of ${craft.name}`} />
+              <Illustration priority name={craft.slug} className="h-full w-auto" title={`Illustration of ${craft.name}`} />
             </div>
           </div>
         </div>
@@ -226,7 +226,7 @@ export default async function CraftPage({ params }: { params: Promise<{ state: s
         {/* Shops */}
         <section id="shops" aria-labelledby="shops-h">
           <SectionHeader id="shops-h" title="Genuine shops" color="#C2185B" sub="Sample listings while we complete our visits. Each will show the makers, hours and a fair-price promise." />
-          <ShopList shops={shops} />
+          <ShopList shops={shops} tile={<CraftTile craft={craft.slug} className="h-full min-h-32" />} />
         </section>
 
         {wk.length > 0 && (

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { useStore } from "@/lib/store";
 import { useMotionOK } from "@/lib/motion";
 import { Buti } from "@/components/motifs";
@@ -26,7 +26,7 @@ function Tick({ on }: { on: boolean }) {
     >
       <AnimatePresence initial={false}>
         {on && (
-          <motion.span
+          <m.span
             key="tick"
             initial={ok ? { scale: 0, rotate: -120 } : false}
             animate={{ scale: 1, rotate: 0 }}
@@ -35,7 +35,7 @@ function Tick({ on }: { on: boolean }) {
             className="absolute"
           >
             <Buti size={24} color="#2E7D5B" center="#F2C14E" />
-          </motion.span>
+          </m.span>
         )}
       </AnimatePresence>
     </span>

@@ -168,7 +168,7 @@ export function TripSwitcher({ manage = true, label = "Trip" }: { manage?: boole
           </button>
         </div>
       )}
-      <TripFormSheet open={sheet !== null} onClose={close} trip={sheet === "edit" ? trip : undefined} />
+      {sheet !== null && <TripFormSheet open onClose={close} trip={sheet === "edit" ? trip : undefined} />}
     </div>
   );
 }

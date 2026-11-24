@@ -156,6 +156,11 @@
   transition-duration: 0.001ms !important;
 }
 
+/* Pre-paint gates set by the inline script in app/layout.tsx */
+.onboarding-gate { display: none; }
+html[data-onb="1"] .onboarding-gate { display: contents; }
+html[data-banner="0"] .preview-banner { display: none; }
+
 @media print {
   .no-print { display: none !important; }
 }

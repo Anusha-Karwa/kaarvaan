@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { useEffect } from "react";
 import { useStore } from "@/lib/store";
 import { Buti } from "../motifs/Buti";
@@ -18,7 +18,7 @@ export function Toast() {
     <div className="pointer-events-none fixed inset-x-0 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-[75] flex justify-center px-4 md:bottom-8" aria-live="polite" role="status">
       <AnimatePresence>
         {toast && (
-          <motion.div
+          <m.div
             key={toast.id}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ export function Toast() {
                 {toast.actionLabel ?? "Undo"}
               </button>
             )}
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

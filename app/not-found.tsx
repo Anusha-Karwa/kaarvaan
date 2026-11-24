@@ -23,7 +23,7 @@ export default function NotFound() {
         <Mandala size={220} className="pointer-events-none absolute -right-16 -top-16 opacity-30" />
         <Mandala size={160} className="pointer-events-none absolute -bottom-12 -left-12 opacity-25" />
         <div className="relative">
-          <Illustration name="camel" className="mx-auto h-44 w-auto sm:h-56" title="A camel looking around, a little lost" />
+          <Illustration priority name="camel" className="mx-auto h-44 w-auto sm:h-56" title="A camel looking around, a little lost" />
           <p className="mt-2 font-hand text-xl text-marigold-ink">404</p>
           <h1 className="text-[34px] sm:text-[42px]">Raasta bhatak gaye?</h1>
           <p lang="hi" className="deva text-xl text-rani">

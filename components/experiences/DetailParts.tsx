@@ -50,7 +50,7 @@ export function ArchFrame({
       </svg>
       <Jharokha rise={0.3} aspect={1.12} stroke="#1F2A5C" strokeWidth={2} />
       <div className="absolute inset-x-6 bottom-5 top-[28%] flex items-end justify-center">
-        <Illustration name={name} title={title} className="h-full max-h-56 w-auto max-w-full" />
+        <Illustration priority name={name} title={title} className="h-full max-h-56 w-auto max-w-full" />
       </div>
       {children}
     </div>

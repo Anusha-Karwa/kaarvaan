@@ -1,0 +1,110 @@
+{
+  "bandhani": [
+    200,
+    160
+  ],
+  "block-print": [
+    200,
+    160
+  ],
+  "blue-pottery": [
+    200,
+    160
+  ],
+  "kundan-meenakari": [
+    200,
+    160
+  ],
+  "mojari": [
+    200,
+    160
+  ],
+  "fort": [
+    200,
+    160
+  ],
+  "hawa-mahal": [
+    200,
+    160
+  ],
+  "palace": [
+    200,
+    160
+  ],
+  "observatory": [
+    200,
+    160
+  ],
+  "stepwell": [
+    200,
+    160
+  ],
+  "museum": [
+    200,
+    160
+  ],
+  "village": [
+    200,
+    160
+  ],
+  "thali": [
+    200,
+    160
+  ],
+  "kachori": [
+    200,
+    160
+  ],
+  "mirchi-vada": [
+    200,
+    160
+  ],
+  "ghewar": [
+    200,
+    160
+  ],
+  "curry": [
+    200,
+    160
+  ],
+  "lassi": [
+    200,
+    160
+  ],
+  "chai": [
+    200,
+    160
+  ],
+  "camel": [
+    240,
+    200
+  ],
+  "auto-rickshaw": [
+    240,
+    160
+  ],
+  "desert-dusk": [
+    800,
+    160
+  ],
+  "comic-planning": [
+    200,
+    160
+  ],
+  "comic-driver": [
+    200,
+    160
+  ],
+  "comic-shop": [
+    200,
+    160
+  ],
+  "comic-overpay": [
+    200,
+    160
+  ],
+  "comic-happy": [
+    200,
+    160
+  ]
+}

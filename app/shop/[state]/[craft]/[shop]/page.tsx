@@ -61,7 +61,7 @@ export default async function ShopPage({ params }: { params: Promise<{ state: st
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[320px]">
             <ArchClip id="shop-cover-arch" aspect={1.25} rise={0.3} />
             <div className="absolute inset-0 overflow-hidden" style={{ clipPath: "url(#shop-cover-arch)" }}>
-              <CraftTile craft={shop.craft} className="h-full w-full" />
+              <CraftTile priority craft={shop.craft} className="h-full w-full" />
             </div>
             <Jharokha aspect={1.25} rise={0.3} strokeWidth={2.5} />
             <div className="absolute -bottom-3 -right-3">

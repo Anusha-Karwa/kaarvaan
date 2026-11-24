@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { Check, RotateCcw, X } from "lucide-react";
 import type { Craft, Shop } from "@/lib/types";
 import { haversine, isOpenNow } from "@/lib/geo";
@@ -8,7 +8,7 @@ import { useStore } from "@/lib/store";
 import { FlipCard } from "../ui/FlipCard";
 import { ChipButton } from "../ui/Chip";
 import { Button } from "../ui/Button";
-import { ShopCard } from "../Cards";
+import { ShopCardClient } from "../ShopCardClient";
 import { LocationButton } from "../LocationButton";
 
 function Stamp({ ok }: { ok: boolean }) {
@@ -159,7 +159,8 @@ export function Quiz({ craft }: { craft: Craft }) {
   );
 }
 
-export function ShopList({ shops }: { shops: Shop[] }) {
+/** `tile` is the server-rendered craft illustration (all shops on a craft page share it). */
+export function ShopList({ shops, tile }: { shops: Shop[]; tile: ReactNode }) {
   const coords = useStore((s) => s.coords);
   const [market, setMarket] = useState<string | null>(null);
   const [openOnly, setOpenOnly] = useState(false);
@@ -216,7 +217,7 @@ export function ShopList({ shops }: { shops: Shop[] }) {
       <ul className="mt-5 grid gap-4 lg:grid-cols-2" aria-live="polite">
         {list.map((s) => (
           <li key={s.slug}>
-            <ShopCard shop={s} />
+            <ShopCardClient shop={s} tile={tile} />
           </li>
         ))}
       </ul>

@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import { RefreshCw, Sparkles, Wand2 } from "lucide-react";
-import { areas } from "@/lib/data";
+import { areas } from "@/lib/content/areas";
 import { useStore } from "@/lib/store";
 import type { AreaSlug, PlanStop, Trip } from "@/lib/types";
 import { Button } from "@/components/ui/Button";

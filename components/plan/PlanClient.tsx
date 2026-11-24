@@ -30,7 +30,8 @@ import {
   Wand2,
   X,
 } from "lucide-react";
-import { useCallback, useState, type ReactNode } from "react";
+import { useCallback, useState, useSyncExternalStore, type ReactNode } from "react";
+import dynamic from "next/dynamic";
 import { KIND_META, itemInfo, type ItemInfo } from "@/lib/data";
 import { useActiveTrip, useStore } from "@/lib/store";
 import { copyText } from "@/lib/share";
@@ -43,11 +44,29 @@ import { Buti, RangoliDivider } from "@/components/motifs";
 import { useT } from "@/lib/i18n";
 import { Checklist } from "./Checklist";
 import { Countdown } from "./Countdown";
-import { DayPickerSheet, ShareDaySheet, type PickerTarget } from "./DaySheets";
+import type { PickerTarget } from "./DaySheets";
 import { JournalNote } from "./JournalNote";
-import { PlanMyDaySheet } from "./PlanMyDaySheet";
-import { TripFormSheet, TripSwitcher } from "./TripSwitcher";
+import { TripSwitcher } from "./TripSwitcher";
 import { KIND_ICON, dayDate, orderStops, planLink, sameRef, shortDate } from "./planUtils";
+
+// Sheets load only when first opened, keeping the planner's first render light.
+const DayPickerSheet = dynamic(() => import("./DaySheets").then((m) => m.DayPickerSheet), { ssr: false });
+const ShareDaySheet = dynamic(() => import("./DaySheets").then((m) => m.ShareDaySheet), { ssr: false });
+const PlanMyDaySheet = dynamic(() => import("./PlanMyDaySheet").then((m) => m.PlanMyDaySheet), { ssr: false });
+const TripFormSheet = dynamic(() => import("./TripSwitcher").then((m) => m.TripFormSheet), { ssr: false });
+
+const desktopQuery = "(min-width: 1024px)";
+function useIsDesktop() {
+  return useSyncExternalStore(
+    (cb) => {
+      const mq = window.matchMedia(desktopQuery);
+      mq.addEventListener("change", cb);
+      return () => mq.removeEventListener("change", cb);
+    },
+    () => window.matchMedia(desktopQuery).matches,
+    () => false,
+  );
+}
 
 type DragData = { type: "tray"; ref: ItemRef; title: string } | { type: "stop"; stopId: string; from: number; title: string };
 
@@ -398,6 +417,10 @@ export function PlanClient() {
   return (
     <div className="container-k pt-6">
       <SectionHeader as="h1" title="Plan your days" hi="योजना" sub={t("common.privateTrip")} color="#2E7D5B" />
+      <p className="-mt-2 mb-5 max-w-2xl text-[17px] leading-relaxed text-ink/85">
+        Drag what you&apos;ve saved into Day 1, Day 2 and so on. Smart order sorts each day by area so you don&apos;t zig-zag across
+        Jaipur, and every stop gets a suggested time, with a nudge if it&apos;s closed then.
+      </p>
       {hydrated ? <Planner /> : <PlanSkeleton />}
     </div>
   );
@@ -415,6 +438,7 @@ function Planner() {
   const closePlanFor = useCallback(() => setPlanFor(null), []);
   const closeEdit = useCallback(() => setEditTrip(false), []);
 
+  const isDesktop = useIsDesktop();
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { delay: 150, tolerance: 6 } }),
     useSensor(TouchSensor, { activationConstraint: { delay: 200, tolerance: 8 } }),
@@ -497,14 +521,14 @@ function Planner() {
         </div>
         <aside className="order-1 space-y-5 lg:sticky lg:top-20 lg:order-2" aria-label="Your saved items and checklist">
           <Tray trip={trip} onPick={setPicker} />
-          <div className="hidden lg:block">
-            <Checklist />
-          </div>
+          {isDesktop && <Checklist />}
         </aside>
       </div>
-      <div className="mt-6 lg:hidden">
-        <Checklist />
-      </div>
+      {!isDesktop && (
+        <div className="mt-6">
+          <Checklist />
+        </div>
+      )}
       <div className="mt-6 flex flex-wrap gap-2">
         <ButtonLink href="/memories" variant="marigold">
           Your yaadein (memories)
@@ -523,10 +547,10 @@ function Planner() {
         )}
       </DragOverlay>
 
-      <DayPickerSheet trip={trip} target={picker} onClose={closePicker} />
-      <ShareDaySheet trip={trip} day={shareDay} onClose={closeShare} />
-      <PlanMyDaySheet open={planFor !== null} onClose={closePlanFor} trip={trip} initialDay={planFor ?? 0} />
-      <TripFormSheet open={editTrip} onClose={closeEdit} trip={trip} />
+      {picker && <DayPickerSheet trip={trip} target={picker} onClose={closePicker} />}
+      {shareDay !== null && <ShareDaySheet trip={trip} day={shareDay} onClose={closeShare} />}
+      {planFor !== null && <PlanMyDaySheet open onClose={closePlanFor} trip={trip} initialDay={planFor} />}
+      {editTrip && <TripFormSheet open onClose={closeEdit} trip={trip} />}
     </DndContext>
   );
 }

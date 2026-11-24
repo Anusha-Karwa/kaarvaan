@@ -56,7 +56,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
   return (
     <div>
       <section className="relative overflow-hidden bg-indigo-dark">
-        <Illustration name="desert-dusk" className="h-40 w-full object-cover sm:h-48" />
+        <Illustration priority name="desert-dusk" className="h-40 w-full object-cover! sm:h-48" />
         <div className="absolute inset-0 bg-gradient-to-t from-indigo-dark/90 via-indigo-dark/40 to-transparent" />
         <div className="container-k absolute inset-x-0 bottom-0 pb-4">
           <p className="font-hand text-lg text-haldi">{s.name} · Jaipur</p>

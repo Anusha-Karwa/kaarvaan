@@ -30,7 +30,7 @@ export default function GettingAroundPage() {
         title="Getting around"
         hi="आना-जाना"
         kicker="Chalo, chalte hain"
-        art={<Illustration name="auto-rickshaw" className="h-32 w-auto sm:h-44" title="A Jaipur auto-rickshaw" />}
+        art={<Illustration priority name="auto-rickshaw" className="h-32 w-auto sm:h-44" title="A Jaipur auto-rickshaw" />}
       >
         <p>Simple, honest tips for moving around Jaipur: autos, app cabs, walking the bazaars, and when to go where.</p>
       </PageHero>

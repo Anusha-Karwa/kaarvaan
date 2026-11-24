@@ -1,10 +1,10 @@
 /* Kaarvaan service worker: offline app shell + "Download Jaipur for offline". */
-const VERSION = "kaarvaan-v1";
+const VERSION = "kaarvaan-v2";
 const PAGES = `${VERSION}-pages`;
 const ASSETS = `${VERSION}-assets`;
 const SHELL = ["/", "/price-check", "/phrases", "/memories", "/plan", "/saved", "/shop/rajasthan", "/experiences", "/manifest.webmanifest"];
 
-const ASSET_RE = /\/_next\/static\/[^"'\s)\\]+/g;
+const ASSET_RE = /\/(?:_next\/static\/|illustrations\/)[^"'\s)\\]+/g;
 
 async function cachePage(url, pageCache, assetCache) {
   const res = await fetch(url, { credentials: "same-origin" });
@@ -73,7 +73,7 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(req.url);
 
   // Google Fonts (if any) & same-origin static assets: cache first
-  if (url.origin === self.location.origin && (url.pathname.startsWith("/_next/static/") || url.pathname.startsWith("/icons/") || url.pathname.startsWith("/_next/image"))) {
+  if (url.origin === self.location.origin && (url.pathname.startsWith("/_next/static/") || url.pathname.startsWith("/icons/") || url.pathname.startsWith("/illustrations/") || url.pathname.startsWith("/_next/image"))) {
     event.respondWith(
       caches.match(req).then(
         (hit) =>

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AlertTriangle, ArrowLeft, ArrowRight, CalendarDays, MessageCircle, Minus, Plus, Send } from "lucide-react";
 import type { Workshop } from "@/lib/types";
-import { getArea } from "@/lib/data";
+import { getArea } from "@/lib/content/areas";
 import { useStore } from "@/lib/store";
 import { KAARVAAN_WHATSAPP, waLink } from "@/lib/whatsapp";
 import { RouteLine } from "@/components/motifs";

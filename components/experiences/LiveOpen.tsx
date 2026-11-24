@@ -2,7 +2,7 @@
 
 import type { Hours } from "@/lib/types";
 import { openStatus } from "@/lib/geo";
-import { useNow } from "@/components/Cards";
+import { useNow } from "@/lib/useNow";
 import { OpenChip } from "@/components/ui/Chip";
 
 /** Live "Open now · closes 5:30 pm" chip. Renders a quiet placeholder until the clock is known (no hydration mismatch). */

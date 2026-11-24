@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useId, useRef, type KeyboardEvent } from "react";
 
 export interface TabDef {
@@ -52,7 +52,7 @@ export function Tabs({ tabs, value, onChange, label }: { tabs: TabDef[]; value: 
               </span>
             )}
             {active && (
-              <motion.svg
+              <m.svg
                 layoutId={`wave-${layout}`}
                 className="absolute inset-x-2 -bottom-1 h-2.5"
                 viewBox="0 0 100 10"
@@ -61,7 +61,7 @@ export function Tabs({ tabs, value, onChange, label }: { tabs: TabDef[]; value: 
                 transition={{ type: "spring", stiffness: 420, damping: 34 }}
               >
                 <path d="M0 5 Q 6.25 0 12.5 5 T 25 5 T 37.5 5 T 50 5 T 62.5 5 T 75 5 T 87.5 5 T 100 5" fill="none" stroke="#E8A33D" strokeWidth="3" vectorEffect="non-scaling-stroke" strokeLinecap="round" />
-              </motion.svg>
+              </m.svg>
             )}
           </button>
         );

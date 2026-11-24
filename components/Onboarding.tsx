@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { CalendarDays, Compass, Heart, MapPinned } from "lucide-react";
 import { useStore } from "@/lib/store";
-import { states } from "@/lib/data";
+import { states } from "@/lib/content/states";
 import { useMotionOK } from "@/lib/motion";
 import { RouteLine } from "./motifs/RouteLine";
 import { BlockPrintPattern } from "./motifs/BlockPrintPattern";
@@ -76,8 +76,8 @@ export function Onboarding() {
           />
         </div>
 
-        <AnimatePresence mode="wait">
-          <motion.section
+        <AnimatePresence mode="wait" initial={false}>
+          <m.section
             key={step}
             initial={ok ? { opacity: 0, x: 24 } : false}
             animate={{ opacity: 1, x: 0 }}
@@ -205,7 +205,7 @@ export function Onboarding() {
                 </div>
               </>
             )}
-          </motion.section>
+          </m.section>
         </AnimatePresence>
 
         <div className="mt-8 flex items-center gap-3">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useStore } from "@/lib/store";
 import { useMotionOK } from "@/lib/motion";
 
@@ -29,7 +29,7 @@ function Burst({ seed }: { seed: number }) {
   return (
     <div className="pointer-events-none fixed inset-0 z-[80] overflow-hidden" aria-hidden="true">
       {petals.map((p, i) => (
-        <motion.svg
+        <m.svg
           key={i}
           width={p.size}
           height={p.size * 1.6}
@@ -42,7 +42,7 @@ function Burst({ seed }: { seed: number }) {
         >
           <ellipse cx="5" cy="8" rx="4.4" ry="7.6" fill={p.color} />
           <path d="M5 2 L5 14" stroke="#fff" strokeOpacity="0.35" strokeWidth="0.8" />
-        </motion.svg>
+        </m.svg>
       ))}
     </div>
   );

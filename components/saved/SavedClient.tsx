@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { CalendarPlus, Check, Trash2, X } from "lucide-react";
 import { useState } from "react";
 import { KIND_META, itemInfo, type ItemInfo } from "@/lib/data";
@@ -29,6 +29,10 @@ export function SavedClient() {
   return (
     <div className="container-k pt-6">
       <SectionHeader as="h1" title={t("saved.title")} hi="मेरा थैला" sub={t("saved.subtitle")} color="#C2185B" />
+      <p className="-mt-2 mb-5 max-w-2xl text-[17px] leading-relaxed text-ink/85">
+        Everything you tap ♡ on lands here: makers&apos; shops, workshops, places and food. Tick a few and add them to a day in your
+        plan, or clear out what you&apos;ve changed your mind about.
+      </p>
       {hydrated ? (
         <SavedList />
       ) : (
@@ -154,7 +158,7 @@ function SavedList() {
                     const on = liveSelected.has(k);
                     const day = dayOf(s);
                     return (
-                      <motion.li
+                      <m.li
                         key={k}
                         layout={ok}
                         initial={ok ? { opacity: 0, y: 8 } : false}
@@ -210,7 +214,7 @@ function SavedList() {
                         >
                           <X className="h-5 w-5" aria-hidden="true" />
                         </button>
-                      </motion.li>
+                      </m.li>
                     );
                   })}
                 </AnimatePresence>
@@ -232,7 +236,7 @@ function SavedList() {
       {/* Bulk bar */}
       <AnimatePresence>
         {liveSelected.size > 0 && (
-          <motion.div
+          <m.div
             initial={ok ? { y: 80, opacity: 0 } : false}
             animate={{ y: 0, opacity: 1 }}
             exit={ok ? { y: 80, opacity: 0 } : { opacity: 0 }}
@@ -261,7 +265,7 @@ function SavedList() {
                 <X className="h-5 w-5" aria-hidden="true" />
               </button>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

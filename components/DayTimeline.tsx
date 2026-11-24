@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AlertTriangle, Clock, Send } from "lucide-react";
 import type { ReactNode } from "react";
-import { KIND_META, getArea, type ItemInfo } from "@/lib/data";
+import type { ItemInfo } from "@/lib/data";
+import { getArea } from "@/lib/content/areas";
+import { KIND_META } from "@/lib/content/meta";
 import { formatClock, hoursLabel } from "@/lib/geo";
 import type { TimeWindow } from "@/lib/plan";
 import { useMotionOK } from "@/lib/motion";
@@ -81,7 +83,7 @@ export function DayTimeline<T extends TimelineStop>({ stops, weekday = 1, label,
   return (
     <div className="relative">
       {/* Rail */}
-      <motion.div
+      <m.div
         aria-hidden="true"
         className="absolute bottom-6 left-[20.5px] top-6 w-[3px] origin-top rounded-full"
         style={{
@@ -99,7 +101,7 @@ export function DayTimeline<T extends TimelineStop>({ stops, weekday = 1, label,
           const w = wins[i];
           const stamp = <StopStamp n={i + 1} color={meta.color} />;
           return (
-            <motion.li
+            <m.li
               key={stop.id}
               layout={ok ? "position" : false}
               className="relative flex gap-3"
@@ -135,7 +137,7 @@ export function DayTimeline<T extends TimelineStop>({ stops, weekday = 1, label,
                 </div>
                 {renderActions && <div className="mt-2 flex flex-wrap items-center gap-1">{renderActions(stop, i, info)}</div>}
               </div>
-            </motion.li>
+            </m.li>
           );
         })}
       </ol>

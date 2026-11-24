@@ -3,6 +3,14 @@ import { Hammer, Landmark, UtensilsCrossed } from "lucide-react";
 import { BlockPrintPattern, Buti, StampIcon } from "@/components/motifs";
 import { Handnote } from "@/components/ui/Handnote";
 import { ExperiencesTabs } from "@/components/experiences/ExperiencesTabs";
+import { DishCard, PlaceCard, WorkshopCard } from "@/components/Cards";
+import { dishes as allDishes, places as allPlaces, workshops as allWorkshops } from "@/lib/content/experiences";
+
+const cards = Object.fromEntries([
+  ...allWorkshops.map((w) => [`w:${w.slug}`, <WorkshopCard key={w.slug} w={w} className="w-full" />]),
+  ...allPlaces.map((p) => [`p:${p.slug}`, <PlaceCard key={p.slug} p={p} className="w-full" />]),
+  ...allDishes.map((d) => [`d:${d.slug}`, <DishCard key={d.slug} d={d} className="w-full" />]),
+]);
 import { dishes, places, workshops } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -46,7 +54,7 @@ export default function ExperiencesPage() {
         </div>
       </section>
       <div className="container-k pb-6 pt-4">
-        <ExperiencesTabs />
+        <ExperiencesTabs cards={cards} />
       </div>
     </div>
   );

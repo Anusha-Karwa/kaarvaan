@@ -1,58 +1,17 @@
-import areasJson from "@/data/areas.json";
-import statesJson from "@/data/states.json";
-import craftsJson from "@/data/crafts.json";
-import shopsJson from "@/data/shops.json";
-import workshopsJson from "@/data/workshops.json";
-import placesJson from "@/data/places.json";
-import foodJson from "@/data/food.json";
-import phrasesJson from "@/data/phrases.json";
-import tipsJson from "@/data/tips.json";
-import type {
-  Area,
-  AreaSlug,
-  Craft,
-  CraftSlug,
-  Dish,
-  Hours,
-  ItemKind,
-  ItemRef,
-  Phrase,
-  Place,
-  Shop,
-  StateInfo,
-  Tip,
-  Workshop,
-} from "./types";
+import { areas, getArea } from "./content/areas";
+import { states } from "./content/states";
+import { crafts, getCraft } from "./content/crafts";
+import { getShop, shops, shopsForCraft } from "./content/shops";
+import { dishes, getDish, getPlace, getWorkshop, places, workshops } from "./content/experiences";
+import { getPhrase, phrases, tips } from "./content/phrases";
+import { KIND_META } from "./content/meta";
+import type { AreaSlug, Hours, ItemRef } from "./types";
 
-export const areas = areasJson as Area[];
-export const states = statesJson as StateInfo[];
-export const crafts = craftsJson as unknown as Craft[];
-export const shops = shopsJson as Shop[];
-export const workshops = workshopsJson as unknown as Workshop[];
-export const places = placesJson as Place[];
-export const dishes = foodJson as Dish[];
-export const phrases = phrasesJson as Phrase[];
-export const tips = tipsJson as Tip[];
-
-export const getArea = (slug: AreaSlug | string) => areas.find((a) => a.slug === slug);
-export const getCraft = (slug: string) => crafts.find((c) => c.slug === slug);
-export const getShop = (slug: string) => shops.find((s) => s.slug === slug);
-export const getWorkshop = (slug: string) => workshops.find((w) => w.slug === slug);
-export const getPlace = (slug: string) => places.find((p) => p.slug === slug);
-export const getDish = (slug: string) => dishes.find((d) => d.slug === slug);
-export const getPhrase = (id: string) => phrases.find((p) => p.id === id);
-export const shopsForCraft = (craft: CraftSlug | string) =>
-  shops.filter((s) => s.craft === craft).sort((a, b) => a.recommendedRank - b.recommendedRank);
-
-export const KIND_META: Record<
-  ItemKind,
-  { label: string; plural: string; color: string; text: string; bg: string; section: "shopping" | "experiences" }
-> = {
-  shop: { label: "Shop", plural: "Shops", color: "#C2185B", text: "text-rani", bg: "bg-rani", section: "shopping" },
-  workshop: { label: "Workshop", plural: "Workshops", color: "#2E7D5B", text: "text-leaf", bg: "bg-leaf", section: "experiences" },
-  place: { label: "Place", plural: "Places", color: "#1F2A5C", text: "text-indigo", bg: "bg-indigo", section: "experiences" },
-  dish: { label: "Food", plural: "Food", color: "#B5462F", text: "text-terracotta", bg: "bg-terracotta", section: "experiences" },
-};
+// Full barrel: server components and pages that need everything import from here.
+// Client components should import the smallest module in ./content instead.
+export { areas, getArea, states, crafts, getCraft, shops, getShop, shopsForCraft, workshops, places, dishes };
+export { getWorkshop, getPlace, getDish, phrases, tips, getPhrase, KIND_META };
+export { CRAFT_NAMES } from "./content/meta";
 
 /** A normalised view of any content item, used by planner, saved, search, near-me. */
 export interface ItemInfo extends ItemRef {

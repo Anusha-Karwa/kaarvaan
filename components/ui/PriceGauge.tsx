@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { gaugeAngle, priceVerdict, VERDICT_COPY } from "@/lib/price";
 import { useMotionOK } from "@/lib/motion";
 
@@ -28,14 +28,14 @@ export function PriceGauge({ quoted, min, max }: { quoted: number; min: number; 
         <text x="34" y="116" fontSize="10" fill="#2E7D5B" fontWeight="700">Fair</text>
         <text x="100" y="12" fontSize="10" fill="#8a5a12" fontWeight="700" textAnchor="middle">A bit high</text>
         <text x="166" y="116" fontSize="10" fill="#B5462F" fontWeight="700" textAnchor="end">Too high</text>
-        <motion.g
+        <m.g
           initial={ok ? { rotate: -90 } : false}
           animate={{ rotate: angle }}
           transition={ok ? { type: "spring", stiffness: 60, damping: 9 } : { duration: 0 }}
           style={{ originX: "100px", originY: "100px", transformBox: "view-box" }}
         >
           <path d="M100 100 L96 96 L100 30 L104 96 Z" fill="#E8A33D" stroke="#1F2A5C" strokeWidth="1.5" strokeLinejoin="round" />
-        </motion.g>
+        </m.g>
         <circle cx="100" cy="100" r="9" fill="#1F2A5C" />
         <circle cx="100" cy="100" r="3.5" fill="#E8A33D" />
       </svg>

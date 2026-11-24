@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useId, type ReactNode } from "react";
 import { Camera, Stamp } from "lucide-react";
 import { useActiveTrip, useStore } from "@/lib/store";
@@ -98,7 +98,7 @@ function StampSlot({ stamp, i }: { stamp: PassportStamp; i: number }) {
   const ok = useMotionOK();
   return (
     <li className="flex flex-col items-center text-center">
-      <motion.div
+      <m.div
         initial={ok ? { scale: 1.8, opacity: 0, rotate: stamp.rotate - 12 } : { rotate: stamp.rotate }}
         whileInView={{ scale: 1, opacity: 1, rotate: stamp.rotate }}
         viewport={{ once: true, margin: "-40px" }}
@@ -107,7 +107,7 @@ function StampSlot({ stamp, i }: { stamp: PassportStamp; i: number }) {
         <Link href={stamp.info.href} className="block rounded-full" aria-label={`${stamp.info.title}: open`}>
           <RubberStamp stamp={stamp} />
         </Link>
-      </motion.div>
+      </m.div>
       <span className="mt-1 line-clamp-1 font-hand text-sm text-ink/80">
         {stamp.info.title}
         {stamp.source === "photo" && <Camera className="ml-1 inline h-3 w-3" aria-label="from a photo tag" />}

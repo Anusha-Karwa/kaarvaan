@@ -1,29 +1,15 @@
-"use client";
-
-import Link from "next/link";
-import { ArrowRight, Clock, Languages, MapPin, Users } from "lucide-react";
+import { ArrowRight, Clock, Users } from "lucide-react";
 import type { Craft, Dish, Place, Shop, Workshop } from "@/lib/types";
-import { getArea, getCraft, shopsForCraft } from "@/lib/data";
-import { formatKm, haversine, openStatus } from "@/lib/geo";
+import { getArea } from "@/lib/content/areas";
+import { shopsForCraft } from "@/lib/content/shops";
 import { formatINR } from "@/lib/price";
-import { useStore } from "@/lib/store";
 import { Illustration, type IllustrationName } from "./illustrations";
 import { ArchCard } from "./ui/Card";
-import { Chillies, Chip, OpenChip, VegMark } from "./ui/Chip";
+import { Chillies, Chip, VegMark } from "./ui/Chip";
 import { SampleRibbon } from "./ui/SampleRibbon";
-import { VerifiedSeal } from "./motifs/VerifiedSeal";
 import { BandhaniDots } from "./motifs/BandhaniDots";
 import { BlockPrintPattern } from "./motifs/BlockPrintPattern";
-import { SaveButton } from "./ItemActions";
-import { useNow } from "@/lib/useNow";
-
-export { useNow };
-
-export function useDistance(lat: number, lng: number): string | null {
-  const coords = useStore((s) => s.coords);
-  if (!coords) return null;
-  return formatKm(haversine(coords.lat, coords.lng, lat, lng));
-}
+import { ShopCardClient } from "./ShopCardClient";
 
 export const CRAFT_TINT: Record<string, string> = {
   bandhani: "#FBE3EC",
@@ -34,11 +20,11 @@ export const CRAFT_TINT: Record<string, string> = {
 };
 
 /** Patterned tile used in place of shop photos. */
-export function CraftTile({ craft, className = "", children }: { craft: string; className?: string; children?: React.ReactNode }) {
+export function CraftTile({ craft, className = "", children, priority = false }: { craft: string; className?: string; children?: React.ReactNode; priority?: boolean }) {
   return (
     <div className={`relative overflow-hidden ${className}`} style={{ background: CRAFT_TINT[craft] ?? "#FBF6EC" }}>
       {craft === "bandhani" ? <BandhaniDots color="#C2185B" opacity={0.35} /> : <BlockPrintPattern color={craft === "blue-pottery" ? "#2F5DA8" : "#1F2A5C"} opacity={0.1} />}
-      <Illustration name={craft as IllustrationName} className="relative mx-auto h-full w-auto max-w-[80%] p-2" />
+      <Illustration priority={priority} name={craft as IllustrationName} className="relative mx-auto h-full w-auto max-w-[80%] p-2" />
       {children}
     </div>
   );
@@ -68,42 +54,9 @@ export function CraftCard({ craft }: { craft: Craft }) {
   );
 }
 
+/** Server wrapper: renders the illustration tile here so its SVG never ships as JavaScript. */
 export function ShopCard({ shop }: { shop: Shop }) {
-  const now = useNow();
-  const status = now ? openStatus(shop.hours, now) : null;
-  const dist = useDistance(shop.lat, shop.lng);
-  const craft = getCraft(shop.craft);
-  return (
-    <article className="card relative overflow-hidden">
-      <Link href={`/shop/rajasthan/${shop.craft}/${shop.slug}`} className="grid grid-cols-[96px_1fr] gap-0 sm:grid-cols-[120px_1fr]">
-        <CraftTile craft={shop.craft} className="h-full min-h-32" />
-        <div className="min-w-0 p-3 pr-14">
-          <SampleRibbon className="mb-1" />
-          <h3 className="text-xl leading-tight">{shop.name}</h3>
-          <p className="mt-0.5 flex items-center gap-1 text-sm text-muted">
-            <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-            {shop.market}
-            {dist && <span className="font-semibold text-indigo"> · {dist}</span>}
-          </p>
-          <div className="mt-1.5 flex flex-wrap gap-1.5">
-            {status && <OpenChip open={status.open} label={status.open ? "Open now" : "Closed now"} />}
-            <Chip tone="sand">
-              <Languages className="h-3.5 w-3.5" aria-hidden="true" /> {shop.languages.slice(0, 2).join(", ")}
-            </Chip>
-          </div>
-          <p className="mt-1.5 text-sm text-ink/80">
-            Makers: {shop.makers.map((m) => m.name).join(", ")}
-          </p>
-        </div>
-      </Link>
-      <div className="absolute right-2 top-2">
-        <SaveButton item={{ kind: "shop", slug: shop.slug }} title={shop.name} compact />
-      </div>
-      <div className="pointer-events-none absolute bottom-1 right-1">
-        <VerifiedSeal size={52} date={new Date(shop.visitedOn).toLocaleDateString("en-IN", { month: "short", year: "numeric" })} label={`Visited · ${craft?.name ?? ""}`.trim()} />
-      </div>
-    </article>
-  );
+  return <ShopCardClient shop={shop} tile={<CraftTile craft={shop.craft} className="h-full min-h-32" />} />;
 }
 
 export function WorkshopCard({ w, className = "" }: { w: Workshop; className?: string }) {

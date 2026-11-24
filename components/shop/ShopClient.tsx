@@ -13,7 +13,7 @@ import { useT } from "@/lib/i18n";
 import { Sheet } from "../ui/Sheet";
 import { Button, buttonClass } from "../ui/Button";
 import { OpenChip } from "../ui/Chip";
-import { useNow } from "../Cards";
+import { useNow } from "@/lib/useNow";
 
 export function LiveOpenStatus({ shop }: { shop: Pick<Shop, "hours"> }) {
   const now = useNow();

@@ -41,9 +41,16 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+// Runs before first paint: reads saved preferences so server-rendered UI (onboarding, preview banner)
+// shows or hides without waiting for JavaScript or shifting the layout.
+const PRE_PAINT = `(function(){var d=document.documentElement;try{var s=(JSON.parse(localStorage.getItem("kaarvaan-v1")||"null")||{}).state||{};if(s.bannerDismissed)d.setAttribute("data-banner","0");var p=location.pathname,skip=/^\\/(plan\\/view|privacy|styleguide)/.test(p)||/[?&]from=hotel/.test(location.search);if(!s.onboarded&&!skip)d.setAttribute("data-onb","1")}catch(e){}})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${rozha.variable} ${mukta.variable} ${tiro.variable} ${kalam.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${rozha.variable} ${mukta.variable} ${tiro.variable} ${kalam.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: PRE_PAINT }} />
+      </head>
       <body className="min-h-dvh antialiased">
         <a
           href="#main"

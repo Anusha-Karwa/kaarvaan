@@ -9,9 +9,12 @@ import { PaperGrain } from "./motifs/PaperGrain";
 import { PetalConfetti } from "./motifs/PetalConfetti";
 import { Toast } from "./ui/Toast";
 import dynamic from "next/dynamic";
+import { Onboarding } from "./Onboarding";
+import { LazyMotion } from "framer-motion";
+
+const loadMotionFeatures = () => import("@/lib/motion-features").then((m) => m.default);
 
 // Loaded only when needed, to keep the shared bundle small.
-const Onboarding = dynamic(() => import("./Onboarding").then((m) => m.Onboarding), { ssr: false });
 const SearchSheet = dynamic(() => import("./SearchSheet").then((m) => m.SearchSheet), { ssr: false });
 import type { AreaSlug } from "@/lib/types";
 
@@ -74,7 +77,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const skipOnboarding = pathname.startsWith("/plan/view") || pathname === "/privacy" || pathname === "/styleguide";
 
   return (
-    <>
+    <LazyMotion features={loadMotionFeatures}>
       {children}
       {!online && (
         <div className="fixed left-1/2 top-[calc(4.5rem+env(safe-area-inset-top))] z-[65] -translate-x-1/2" role="status">
@@ -83,12 +86,18 @@ export function AppShell({ children }: { children: ReactNode }) {
           </span>
         </div>
       )}
-      {hydrated && !onboarded && !skipOnboarding && <Onboarding />}
+      {/* Server-rendered but hidden; the pre-paint script in <head> reveals it for first-time visitors,
+          so it paints without waiting for JavaScript. Unmounted once the store says onboarding is done. */}
+      {!skipOnboarding && (!hydrated || !onboarded) && (
+        <div className="onboarding-gate">
+          <Onboarding />
+        </div>
+      )}
       {searchOpen && <SearchSheet />}
       <PetalConfetti />
       <Toast />
       <PaperGrain />
-    </>
+    </LazyMotion>
   );
 }
 

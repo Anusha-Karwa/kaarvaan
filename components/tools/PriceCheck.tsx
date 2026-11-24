@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import { ArrowRight, BookOpen, IndianRupee, Package, ScanSearch, Store } from "lucide-react";
-import { crafts, getCraft, getPhrase } from "@/lib/data";
+import { crafts, getCraft } from "@/lib/content/crafts";
+import { getPhrase } from "@/lib/content/phrases";
 import { formatINR, priceVerdict, VERDICT_COPY, type Verdict } from "@/lib/price";
 import { useStore } from "@/lib/store";
 import { useT } from "@/lib/i18n";

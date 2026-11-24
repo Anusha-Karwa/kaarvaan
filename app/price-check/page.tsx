@@ -11,7 +11,7 @@ export default function PriceCheckPage() {
         title="Price check"
         hi="दाम जाँचें"
         kicker="Sahi daam, khushi se"
-        art={<Illustration name="comic-overpay" className="h-28 w-auto sm:h-36" />}
+        art={<Illustration priority name="comic-overpay" className="h-28 w-auto sm:h-36" />}
       >
         <p>Standing in a shop? Pick the craft and the piece, type the price you were quoted, and see if it&apos;s fair. Works offline.</p>
       </PageHero>

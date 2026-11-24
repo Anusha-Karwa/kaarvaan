@@ -10,9 +10,10 @@ export function PreviewBanner() {
   const dismissed = useStore((s) => s.bannerDismissed);
   const set = useStore((s) => s.set);
   const t = useT();
-  if (!hydrated || dismissed) return null;
+  // Rendered on the server so it never pushes the page down; a pre-paint script hides it if dismissed.
+  if (hydrated && dismissed) return null;
   return (
-    <div className="bg-haldi/90 text-ink">
+    <div className="preview-banner bg-haldi/90 text-ink">
       <div className="container-k flex items-center gap-3 py-1.5 text-sm">
         <span className="font-hand text-base font-bold">Preview</span>
         <p className="flex-1 leading-snug">{t("banner.preview").replace(/^Preview: /, "")}</p>

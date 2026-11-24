@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Compass, Hand, Heart, ShoppingBag, UtensilsCrossed, type LucideIcon } from "lucide-react";
-import { phrases } from "@/lib/data";
+import { phrases } from "@/lib/content/phrases";
 import type { PhraseCategory } from "@/lib/types";
 import { useStore } from "@/lib/store";
 import { StampIcon } from "@/components/motifs/StampIcon";

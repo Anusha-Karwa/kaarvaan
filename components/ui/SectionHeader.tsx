@@ -16,7 +16,7 @@ export function SectionHeader({
   title: ReactNode;
   hi?: string;
   sub?: ReactNode;
-  action?: { href: string; label: string };
+  action?: { href: string; label: ReactNode };
   color?: string;
   as?: "h1" | "h2" | "h3";
   className?: string;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useId } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useMotionOK } from "@/lib/motion";
 
 interface Props {
@@ -42,13 +42,13 @@ export function ToranBorder({ className = "", animate = false, flip = false, ban
   );
   if (!animate || !ok) return <div className={className}>{svg}</div>;
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={{ clipPath: "inset(0 100% 0 0)" }}
       animate={{ clipPath: "inset(0 0% 0 0)" }}
       transition={{ duration: 0.9, ease: [0.3, 0.7, 0.2, 1] }}
     >
       {svg}
-    </motion.div>
+    </m.div>
   );
 }

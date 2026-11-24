@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import { states } from "@/lib/data";
+import { states } from "@/lib/content/states";
 import { LocationButton } from "./LocationButton";
 import { BandhaniDots } from "./motifs/BandhaniDots";
 

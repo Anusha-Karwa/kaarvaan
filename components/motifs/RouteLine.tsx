@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import { useMotionOK } from "@/lib/motion";
 
@@ -26,7 +26,8 @@ interface Props {
 
 /** Dashed hand-drawn path with stops (circles with dotted marigold rings). Draws itself. */
 export function RouteLine({ stops, orientation = "horizontal", active, animate = true, className = "", compact = false, ariaLabel }: Props) {
-  const ok = useMotionOK() && animate;
+  // Progress indicators (active step set) render fully from the server; decorative routes draw themselves.
+  const ok = useMotionOK() && animate && active === undefined;
   const n = stops.length;
   const seg = 100;
   const vertical = orientation === "vertical";
@@ -46,7 +47,7 @@ export function RouteLine({ stops, orientation = "horizontal", active, animate =
     const Icon = s.icon;
     const body = (
       <>
-        <motion.span
+        <m.span
           className="relative flex h-10 w-10 items-center justify-center"
           initial={ok ? { scale: 0 } : false}
           whileInView={ok ? { scale: [0, 1.2, 1] } : undefined}
@@ -62,7 +63,7 @@ export function RouteLine({ stops, orientation = "horizontal", active, animate =
           ) : (
             <span className="relative text-xs font-bold text-ivory">{i + 1}</span>
           )}
-        </motion.span>
+        </m.span>
         <span className={vertical ? "ml-3 min-w-0" : "mt-1 block text-center"}>
           <span className={`block font-semibold leading-tight text-indigo ${compact ? "text-xs" : "text-sm"}`}>{s.label}</span>
           {s.sub && <span className="block text-xs leading-snug text-muted">{s.sub}</span>}
@@ -94,7 +95,7 @@ export function RouteLine({ stops, orientation = "horizontal", active, animate =
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        <motion.path
+        <m.path
           d={d}
           fill="none"
           stroke="#1F2A5C"

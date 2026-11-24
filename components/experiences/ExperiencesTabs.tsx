@@ -1,11 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { m } from "framer-motion";
 import type { AreaSlug, Dish } from "@/lib/types";
-import { dishes, getArea, places, workshops } from "@/lib/data";
+import { getArea } from "@/lib/content/areas";
+import { dishes, places, workshops } from "@/lib/content/experiences";
 import { useMotionOK } from "@/lib/motion";
-import { DishCard, PlaceCard, WorkshopCard } from "@/components/Cards";
 import { Tabs } from "@/components/ui/Tabs";
 import { Chillies, ChipButton, VegMark } from "@/components/ui/Chip";
 import { Handnote } from "@/components/ui/Handnote";
@@ -51,7 +51,8 @@ const PLACE_AREAS = Array.from(new Set(places.map((p) => p.area)));
 // useLayoutEffect warns during SSR; this is a client component but still prerendered.
 const useIsoLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
-export function ExperiencesTabs() {
+/** `cards` holds server-rendered cards keyed "w:slug", "p:slug", "d:slug" (keeps illustrations out of the JS bundle). */
+export function ExperiencesTabs({ cards }: { cards: Record<string, ReactNode> }) {
   const [tab, setTab] = useState<TabId>("workshops");
   const [area, setArea] = useState<AreaSlug | "all">("all");
   const [food, setFood] = useState<FoodFilter>("all");
@@ -131,7 +132,7 @@ export function ExperiencesTabs() {
     <div ref={tabsRef}>
       <Tabs tabs={TABS} value={tab} onChange={onChange} label="Kinds of experiences" />
 
-      <motion.div
+      <m.div
         key={tab}
         id={`panel-${tab}`}
         role="tabpanel"
@@ -154,7 +155,7 @@ export function ExperiencesTabs() {
             <ul className="mt-6 grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
               {workshops.map((w) => (
                 <li key={w.slug} className="flex">
-                  <WorkshopCard w={w} className="w-full" />
+                  {cards[`w:${w.slug}`]}
                 </li>
               ))}
             </ul>
@@ -180,7 +181,7 @@ export function ExperiencesTabs() {
             <ul className="mt-5 grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
               {shownPlaces.map((p) => (
                 <li key={p.slug} className="flex">
-                  <PlaceCard p={p} className="w-full" />
+                  {cards[`p:${p.slug}`]}
                 </li>
               ))}
             </ul>
@@ -219,7 +220,7 @@ export function ExperiencesTabs() {
               <ul className="mt-5 grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
                 {shownDishes.map((d) => (
                   <li key={d.slug} className="flex">
-                    <DishCard d={d} className="w-full" />
+                    {cards[`d:${d.slug}`]}
                   </li>
                 ))}
               </ul>
@@ -230,7 +231,7 @@ export function ExperiencesTabs() {
             )}
           </>
         )}
-      </motion.div>
+      </m.div>
     </div>
   );
 }
